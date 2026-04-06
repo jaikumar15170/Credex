@@ -7,6 +7,8 @@ import { DashboardOverviewServer } from "./_components/dashboard-overview-server
 import { Card, CardContent } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardPage() {
   // Fetch accounts first (usually faster)
   const accounts = await getUserAccounts();

@@ -65,38 +65,3 @@ export async function PUT(request, { params }) {
         return Response.json({ error: error.message }, { status: 500 });
     }
 }
-transaction.type === "EXPENSE"
-    ? transaction.amount
-    : -transaction.amount;
-acc[transaction.accountId] = (acc[transaction.accountId] || 0) + change;
-return acc;
-        }, { });
-
-await db.$transaction(async (tx) => {
-    await tx.transaction.deleteMany({
-        where: {
-            id: { in: transactionIds },
-            userId: user.id,
-        },
-    });
-
-    for (const [accountId, balanceChange] of Object.entries(
-        accountBalanceChanges
-    )) {
-        await tx.account.update({
-            where: { id: accountId },
-            data: {
-                balance: {
-                    increment: balanceChange,
-                },
-            },
-        });
-    }
-});
-
-return Response.json({ success: true });
-    } catch (error) {
-    console.error(error);
-    return Response.json({ error: error.message }, { status: 500 });
-}
-}

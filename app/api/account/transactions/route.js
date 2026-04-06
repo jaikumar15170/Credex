@@ -14,19 +14,3 @@ export async function DELETE(request) {
         return Response.json({ error: error.message }, { status: 500 });
     }
 }
-
-data: {
-    balance: {
-        increment: balanceChange,
-                        },
-},
-                });
-            }
-        });
-
-return Response.json({ success: true });
-    } catch (error) {
-    console.error(error);
-    return Response.json({ error: error.message }, { status: 500 });
-}
-}
