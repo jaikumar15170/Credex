@@ -6,12 +6,17 @@ export async function BudgetProgressServer({ accountId }) {
         return null;
     }
 
-    const budgetData = await getCurrentBudget(accountId);
+    try {
+        const budgetData = await getCurrentBudget(accountId);
 
-    return (
-        <BudgetProgress
-            initialBudget={budgetData?.budget}
-            currentExpenses={budgetData?.currentExpenses || 0}
-        />
-    );
+        return (
+            <BudgetProgress
+                initialBudget={budgetData?.budget}
+                currentExpenses={budgetData?.currentExpenses || 0}
+            />
+        );
+    } catch (error) {
+        console.error("Error loading budget:", error);
+        return <div className="text-sm text-red-500">Failed to load budget</div>;
+    }
 }

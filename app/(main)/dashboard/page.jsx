@@ -11,7 +11,15 @@ export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   // Fetch accounts first (usually faster)
-  const accounts = await getUserAccounts();
+  let accounts = [];
+  try {
+    accounts = await getUserAccounts();
+  } catch (error) {
+    console.error("Failed to fetch accounts:", error);
+    // Fallback to empty array to prevent page crash
+    accounts = [];
+  }
+
   const defaultAccount = accounts?.find((account) => account.isDefault);
 
   return (
