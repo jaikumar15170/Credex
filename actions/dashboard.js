@@ -2,7 +2,8 @@
 
 export async function getUserAccounts() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/dashboard`);
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/dashboard`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || "Failed to fetch accounts");
@@ -16,7 +17,8 @@ export async function getUserAccounts() {
 
 export async function createAccount(data) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/dashboard`, {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/dashboard`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -36,7 +38,8 @@ export async function createAccount(data) {
 
 export async function getDashboardData(limit = 20) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/dashboard/data`);
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/dashboard/data`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || "Failed to fetch dashboard data");

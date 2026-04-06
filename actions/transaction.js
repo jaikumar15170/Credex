@@ -12,7 +12,8 @@ const serializeAmount = (obj) => ({
 // Create Transaction
 export async function createTransaction(data) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/transaction`, {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/transaction`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -32,7 +33,8 @@ export async function createTransaction(data) {
 
 export async function getTransaction(id) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/transaction?id=${id}`);
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/transaction?id=${id}`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || "Failed to fetch transaction");
@@ -47,7 +49,8 @@ export async function getTransaction(id) {
 
 export async function updateTransaction(id, data) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/transaction/${id}`, {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/transaction/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -68,7 +71,8 @@ export async function updateTransaction(id, data) {
 // Delete Transaction
 export async function deleteTransaction(id) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/transaction/${id}`, {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/transaction/${id}`, {
       method: "DELETE",
     });
 
@@ -87,7 +91,8 @@ export async function deleteTransaction(id) {
 // Get User Transactions
 export async function getUserTransactions(query = {}) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/transaction`);
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/transaction`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || "Failed to fetch transactions");
