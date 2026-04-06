@@ -20,7 +20,7 @@ import { updateBudget } from "@/actions/budget";
 export function BudgetProgress({ initialBudget, currentExpenses }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newBudget, setNewBudget] = useState(
-    initialBudget?.amount?.toString() || ""
+    parseFloat(initialBudget?.amount)?.toString() || ""
   );
 
   const {
@@ -31,7 +31,7 @@ export function BudgetProgress({ initialBudget, currentExpenses }) {
   } = useFetch(updateBudget);
 
   const percentUsed = initialBudget
-    ? (currentExpenses / initialBudget.amount) * 100
+    ? (parseFloat(currentExpenses) / parseFloat(initialBudget.amount)) * 100
     : 0;
 
   const handleUpdateBudget = async () => {

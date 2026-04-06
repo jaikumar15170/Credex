@@ -64,7 +64,7 @@ export function DashboardOverview({ accounts, transactions }) {
     if (!acc[category]) {
       acc[category] = 0;
     }
-    acc[category] += transaction.amount;
+    acc[category] += parseFloat(transaction.amount);
     return acc;
   }, {});
 
