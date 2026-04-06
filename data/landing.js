@@ -67,45 +67,45 @@ export const featuresData = [
 export const howItWorksData = [
   {
     icon: <CreditCard className="h-8 w-8 text-blue-600" />,
-    title: "1. Create Your Account",
+    title: "1. Sign Up Instantly",
     description:
-      "Get started in minutes with our simple and secure sign-up process",
+      "Register with your email in seconds and start managing your finances right away",
   },
   {
     icon: <BarChart3 className="h-8 w-8 text-blue-600" />,
-    title: "2. Track Your Spending",
+    title: "2. Link Your Accounts",
     description:
-      "Automatically categorize and track your transactions in real-time",
+      "Connect your bank accounts and cards to see all your transactions in one place",
   },
   {
     icon: <PieChart className="h-8 w-8 text-blue-600" />,
-    title: "3. Get Insights",
+    title: "3. Optimize Your Budget",
     description:
-      "Receive AI-powered insights and recommendations to optimize your finances",
+      "Get smart recommendations and visualize your spending patterns to build better financial habits",
   },
 ];
 
-// Testimonials Data
-export const testimonialsData = [
+// Reviews Data
+export const reviewsData = [
   {
-    name: "Sarah Johnson",
-    role: "Small Business Owner",
-    image: "https://randomuser.me/api/portraits/women/75.jpg",
+    name: "Priya Sharma",
+    role: "E-commerce Entrepreneur",
+    image: "https://randomuser.me/api/portraits/women/45.jpg",
     quote:
-      "Welth has transformed how I manage my business finances. The AI insights have helped me identify cost-saving opportunities I never knew existed.",
+      "Credex has revolutionized my financial management! The dashboard gives me real-time insights into my business performance and helps me make better decisions.",
   },
   {
-    name: "Michael Chen",
-    role: "Freelancer",
-    image: "https://randomuser.me/api/portraits/men/75.jpg",
+    name: "Rajesh Patel",
+    role: "Freelance Developer",
+    image: "https://randomuser.me/api/portraits/men/35.jpg",
     quote:
-      "The receipt scanning feature saves me hours each month. Now I can focus on my work instead of manual data entry and expense tracking.",
+      "The invoice tracking and automatic receipt scanning is a game-changer. I've saved countless hours on bookkeeping and can now focus purely on development work.",
   },
   {
-    name: "Emily Rodriguez",
-    role: "Financial Advisor",
-    image: "https://randomuser.me/api/portraits/women/74.jpg",
+    name: "Ananya Desai",
+    role: "Business Consultant",
+    image: "https://randomuser.me/api/portraits/women/28.jpg",
     quote:
-      "I recommend Welth to all my clients. The multi-currency support and detailed analytics make it perfect for international investors.",
+      "I recommend Credex to all my clients. The budget tracking and detailed analytics have helped them optimize expenses and increase profitability significantly.",
   },
 ];

@@ -1,6 +1,8 @@
+/* stylelint-disable */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -38,6 +40,7 @@ html {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -67,21 +70,62 @@ html {
 }
 
 @layer base {
+
+  /* stylelint-disable */
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
+  /* stylelint-enable */
 }
 
 @layer utilities {
+
+  /* stylelint-disable */
   .gradient {
-    @apply bg-gradient-to-br from-blue-600 to-purple-600;
+    @apply bg-gradient-to-br from-green-500 to-black;
   }
+
   .gradient-title {
     @apply gradient font-extrabold tracking-tighter pr-2 pb-2 text-transparent bg-clip-text;
   }
+
+  /* stylelint-enable */
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blinkCursor {
+
+  0%,
+  50% {
+    border-right-color: rgba(22, 163, 74, 0.8);
+  }
+
+  51%,
+  100% {
+    border-right-color: transparent;
+  }
+}
+
+.typewriter-text {
+  animation: slideInUp 1.2s ease-out forwards;
+  overflow: hidden;
+  white-space: normal;
 }
 
 .hero-image-wrapper {
@@ -103,9 +147,11 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
