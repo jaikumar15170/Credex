@@ -1,8 +1,19 @@
 "use server";
 
+function getBaseUrl() {
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  if (process.env.NEXT_PUBLIC_APP_URL) {
+    return process.env.NEXT_PUBLIC_APP_URL;
+  }
+  return "http://localhost:3000";
+}
+
 export async function getCurrentBudget(accountId) {
   try {
-    let url = `/api/budget`;
+    const baseUrl = getBaseUrl();
+    let url = `${baseUrl}/api/budget`;
     if (accountId) {
       url += `?accountId=${accountId}`;
     }
@@ -22,7 +33,8 @@ export async function getCurrentBudget(accountId) {
 
 export async function updateBudget(amount) {
   try {
-    const response = await fetch(`/api/budget`, {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/budget`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount }),

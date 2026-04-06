@@ -14,6 +14,12 @@ export async function DashboardOverviewServer({ accounts }) {
         );
     } catch (error) {
         console.error("Error loading dashboard overview:", error);
-        return <div className="text-sm text-red-500">Failed to load transactions</div>;
+        return (
+            <div className="rounded-lg border border-red-200 bg-red-50 p-4">
+                <p className="text-sm text-red-800">
+                    Failed to load transactions: {error?.message || "Unknown error"}
+                </p>
+            </div>
+        );
     }
 }

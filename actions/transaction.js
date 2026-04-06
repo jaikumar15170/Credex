@@ -4,6 +4,16 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+function getBaseUrl() {
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  if (process.env.NEXT_PUBLIC_APP_URL) {
+    return process.env.NEXT_PUBLIC_APP_URL;
+  }
+  return "http://localhost:3000";
+}
+
 const serializeAmount = (obj) => ({
   ...obj,
   amount: obj.amount.toNumber(),
@@ -12,7 +22,8 @@ const serializeAmount = (obj) => ({
 // Create Transaction
 export async function createTransaction(data) {
   try {
-    const response = await fetch(`/api/transaction`, {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/transaction`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -32,7 +43,8 @@ export async function createTransaction(data) {
 
 export async function getTransaction(id) {
   try {
-    const response = await fetch(`/api/transaction?id=${id}`);
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/transaction?id=${id}`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || "Failed to fetch transaction");
@@ -47,7 +59,8 @@ export async function getTransaction(id) {
 
 export async function updateTransaction(id, data) {
   try {
-    const response = await fetch(`/api/transaction/${id}`, {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/transaction/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -68,7 +81,8 @@ export async function updateTransaction(id, data) {
 // Delete Transaction
 export async function deleteTransaction(id) {
   try {
-    const response = await fetch(`/api/transaction/${id}`, {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/transaction/${id}`, {
       method: "DELETE",
     });
 
@@ -87,7 +101,8 @@ export async function deleteTransaction(id) {
 // Get User Transactions
 export async function getUserTransactions(query = {}) {
   try {
-    const response = await fetch(`/api/transaction`);
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/transaction`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || "Failed to fetch transactions");
