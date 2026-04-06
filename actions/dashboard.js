@@ -10,6 +10,19 @@ function getBaseUrl() {
   return "http://localhost:3000";
 }
 
+function getFetchHeaders() {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  // Add deployment protection bypass token if available
+  if (process.env.VERCEL_DEPLOYMENT_PROTECTION_BYPASS_TOKEN) {
+    headers["x-vercel-protection-bypass"] = process.env.VERCEL_DEPLOYMENT_PROTECTION_BYPASS_TOKEN;
+  }
+
+  return headers;
+}
+
 export async function getUserAccounts() {
   try {
     const baseUrl = getBaseUrl();
