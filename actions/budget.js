@@ -2,7 +2,7 @@
 
 export async function getCurrentBudget(accountId) {
   try {
-    let url = `${process.env.NEXT_PUBLIC_APP_URL}/api/budget`;
+    let url = `/api/budget`;
     if (accountId) {
       url += `?accountId=${accountId}`;
     }
@@ -22,7 +22,7 @@ export async function getCurrentBudget(accountId) {
 
 export async function updateBudget(amount) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/budget`, {
+    const response = await fetch(`/api/budget`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount }),

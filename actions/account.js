@@ -2,8 +2,7 @@
 
 export async function getAccountWithTransactions(accountId) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/account/${accountId}`);
+    const response = await fetch(`/api/account/${accountId}`);
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || "Failed to fetch account");
@@ -18,8 +17,7 @@ export async function getAccountWithTransactions(accountId) {
 
 export async function bulkDeleteTransactions(transactionIds) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/account/transactions`, {
+    const response = await fetch(`/api/account/transactions`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ transactionIds }),
@@ -39,8 +37,7 @@ export async function bulkDeleteTransactions(transactionIds) {
 
 export async function updateDefaultAccount(accountId) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/account/${accountId}`, {
+    const response = await fetch(`/api/account/${accountId}`, {
       method: "PUT",
     });
 
